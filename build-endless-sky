@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Place this script in your ~/bin/ directory (or somewhere in your $PATH).
+# You can either 'cd' into the cloned endless-sky directory,
+# or your can supply that directory as the first argument on the command-line
+# to this script.
+# eg..
+#
+# build-endless-sky "$HOME/Sources/endless-sky"
+# ... or ...
+# cd "$HOME/Sources/endless-sky"
+# build-endless-sky
+
+# We need to install these packages first:
+packages=(
+	g++
+	scons
+	cmake
+	ninja-build
+	curl
+
+	libsdl2-dev
+	libpng-dev
+	libjpeg-dev
+	libgl1-mesa-dev
+	libglew-dev
+	libopenal-dev
+	libmad0-dev
+	uuid-dev
+	libatomic-ops-dev
+	libminizip-dev
+
+	catch2			# required for linux-armv7 preset
+)
+sudo apt install -y "${packages[@]}"
+
+[ -f "endless-sky.6" ] || {
+#  cd "${1:-/git/endless-sky}"
+  cd "${1:-$HOME/Files/sources/endless-sky}"
+}
+
+cmake -DBUILD_TESTING=OFF --preset linux-armv7
+cmake --build --preset linux-armv7-release
