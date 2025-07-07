@@ -29,8 +29,6 @@ packages=(
 	uuid-dev
 	libatomic-ops-dev
 	libminizip-dev
-
-	catch2			# required for linux-armv7 preset
 )
 sudo apt install -y "${packages[@]}"
 
@@ -40,4 +38,4 @@ sudo apt install -y "${packages[@]}"
 }
 
 cmake -DBUILD_TESTING=OFF --preset linux-armv7
-cmake --build --preset linux-armv7-release
+cmake --build --preset linux-armv7-release --target EndlessSky
