@@ -29,6 +29,8 @@ packages=(
 	uuid-dev
 	libatomic-ops-dev
 	libminizip-dev
+	libflac++-dev		# required for v0.10.15 and later
+	libavif-dev			# required for v0.10.15 and later
 )
 sudo apt install -y "${packages[@]}"
 
