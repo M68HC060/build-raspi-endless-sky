@@ -40,4 +40,5 @@ sudo apt install -y "${packages[@]}"
 }
 
 cmake -DBUILD_TESTING=OFF --preset linux-armv7
-cmake --build --preset linux-armv7-release --target EndlessSky
+cmake --build --preset linux-armv7-release --target EndlessSky && s="33mOK" || s="31mFailed"
+echo -e "\033[1;$s\033[m"
